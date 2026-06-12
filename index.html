@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nicolas & Ynae ❤️</title>
+
+<style>
+body{
+    margin:0;
+    font-family:Arial, sans-serif;
+    background: linear-gradient(135deg, #ffe6ee, #fff5f8);
+    text-align:center;
+    color:#444;
+}
+
+.container{
+    max-width:800px;
+    margin:auto;
+    padding:20px;
+}
+
+img{
+    width:100%;
+    max-width:500px;
+    border-radius:20px;
+    margin-top:20px;
+    box-shadow:0 0 20px rgba(0,0,0,0.2);
+}
+
+h1{
+    color:#d63384;
+    margin-top:20px;
+}
+
+.frase{
+    font-size:22px;
+    margin:25px 15px;
+    color:#555;
+    font-style:italic;
+}
+
+#contador{
+    margin-top:30px;
+    font-size:28px;
+    font-weight:bold;
+    color:#c2185b;
+    background:white;
+    border-radius:20px;
+    padding:20px;
+    box-shadow:0 0 15px rgba(0,0,0,0.1);
+}
+
+.footer{
+    margin-top:30px;
+    color:#888;
+    font-size:14px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>❤️ Nicolas & Ynae ❤️</h1>
+
+    <img src="foto.jpg" alt="Foto do casal">
+
+    <div class="frase">
+        "Desde 15/03/2024, escrevendo nossa história."
+    </div>
+
+    <div id="contador"></div>
+
+    <div class="footer">
+        Cada segundo ao seu lado é uma lembrança que vale a pena guardar. ❤️
+    </div>
+
+</div>
+
+<script>
+
+const inicio = new Date("2024-03-15T00:00:00");
+
+function atualizarContador(){
+
+    const agora = new Date();
+
+    let anos = agora.getFullYear() - inicio.getFullYear();
+    let meses = agora.getMonth() - inicio.getMonth();
+    let dias = agora.getDate() - inicio.getDate();
+
+    if(dias < 0){
+        meses--;
+        const ultimoDiaMesAnterior =
+            new Date(agora.getFullYear(), agora.getMonth(), 0).getDate();
+
+        dias += ultimoDiaMesAnterior;
+    }
+
+    if(meses < 0){
+        anos--;
+        meses += 12;
+    }
+
+    let diff = agora - inicio;
+
+    const segundosTotais = Math.floor(diff / 1000);
+
+    const horas = Math.floor(segundosTotais / 3600) % 24;
+    const minutos = Math.floor(segundosTotais / 60) % 60;
+    const segundos = segundosTotais % 60;
+
+    document.getElementById("contador").innerHTML = `
+        ❤️ ${anos} anos<br><br>
+        ❤️ ${meses} meses<br><br>
+        ❤️ ${dias} dias<br><br>
+        ❤️ ${horas} horas<br><br>
+        ❤️ ${minutos} minutos<br><br>
+        ❤️ ${segundos} segundos
+    `;
+}
+
+atualizarContador();
+
+setInterval(atualizarContador, 1000);
+
+</script>
+
+</body>
+</html>
